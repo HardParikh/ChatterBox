@@ -1,0 +1,66 @@
+{% load static %}
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Importing Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Importing materialize.css-->
+        <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"  media="screen,projection"/>
+
+      <!--Letting browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <!--Importing jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
+    </head>
+
+    <body>
+    {% block body %}
+        <div class="section purple lighten-3">
+            <div class="container white-text center-align text">
+            <h2>Chatter BOX</h2>
+            <p>Connecting people</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <div class="section center-block">
+                <div>
+                    {% block form %}
+                    <form id="login-form" class="form-group" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                                <label for="id_username">Username</label>
+                                <input name="username" id="id_username" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                                <label for="id_password">Password</label>
+                                <input name="password" id="id_password" type="password">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s8">
+                                <a href="{% url 'register' %}" class="btn blue waves-effect waves-light pull-s12">Register</a>
+                            </div>
+                            <div class="col s4">
+                            <div class="right">
+                                <button class="btn blue waves-effect waves-light pull-s12">Login</button>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                    {% endblock %}
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+
+  </html>

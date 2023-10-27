@@ -1,0 +1,28 @@
+{% extends 'chat/index.html' %}
+{% block form %}
+    <form id="register-form" class="form-group" method="POST">
+        {% csrf_token %}
+            <div class="row">
+                    <label for="id_username" data-error="Username already taken">Username</label>
+                    {{ form.username }}
+                </div>
+            </div>
+            <div class="row">
+                    <label for="id_password">Password</label>
+                    {{ form.password1 }}
+                </div>
+            </div>
+            <div class="row">
+                    <label for="id_password2">Re-enter Password</label>
+                    {{ form.password2 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                <div class="right">
+                    <button class="btn blue waves-effect waves-light pull-s12">Register</button>
+                </div>
+                </div>
+            </div>
+    </form>
+{% endblock %}
